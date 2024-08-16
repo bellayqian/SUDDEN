@@ -1,0 +1,142 @@
+---
+title: "MediationAnalysis_SUDDEN"
+output: html_document
+date: "2024-06-18"
+---
+
+```{r setup, include=FALSE}
+rm(list=ls())
+library(mediation)
+library(boot)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r ThreeModels, include=FALSE}
+data <- readRDS("./Data/processed_data.rds")
+
+# Step 2: Models
+# Model 1: Veteran Status with Sudden Death
+model1 <- glm(sudden ~ numVet, data = data, family = binomial(link = "logit"))
+summary(model1)
+or_table1 <- as.data.frame(exp(cbind(OR = coef(model1), confint(model1))))
+or_table1 <- cbind(Variable = rownames(or_table1), or_table1)
+rownames(or_table1) <- NULL
+# write_xlsx(or_table1, "./2022/Veteran_SuddenDeath/or_table1.xlsx")
+
+# Model 2: Veteran Status with Sudden Death, adjusted by age, gender, race, and marital status
+model2 <- glm(sudden ~ numVet + age_num + gender + race + marry,
+              data = data, family = binomial(link = "logit"))
+summary(model2)
+or_table2 <- as.data.frame(exp(cbind(OR = coef(model2), confint(model2))))
+or_table2 <- cbind(Variable = rownames(or_table2), or_table2)
+rownames(or_table2) <- NULL
+# write_xlsx(or_table2, "./2022/Veteran_SuddenDeath/or_table2.xlsx")
+
+# Model 3: Veteran Status with Sudden Death, adjusted by age, gender, race, marital status, substance abuse, and mental health
+model3 <- glm(sudden ~ numVet + age_num + gender + race + marry + substance + anx_dep,
+              data = data, family = binomial(link = "logit"))
+summary(model3)
+or_table3 <- exp(cbind(OR = coef(model3), confint(model3)))
+or_table3 <- as.data.frame(exp(cbind(OR = coef(model3), confint(model3))))
+or_table3 <- cbind(Variable = rownames(or_table3), or_table3)
+rownames(or_table3) <- NULL
+# write_xlsx(or_table3, "./2022/Veteran_SuddenDeath/or_table3.xlsx")
+
+```
+
+## Mediation Analysis
+
+```{r mediation, warning=FALSE}
+data_complete <- data[complete.cases(data[, c("sudden", "numVet", "age_num", "gender", "race", "marry", "substance", "anx_dep")]), ]
+
+missing_counts <- colSums(is.na(data_complete))
+print(missing_counts)
+
+# model3 <- glm(sudden ~ numVet + age_num + gender + race + marry + substance + anx_dep,
+#               data = data_complete, family = binomial(link = "logit"))
+# or_table <- as.data.frame(exp(cbind(OR = coef(model3), confint(model3))))
+
+
+# Establish the relationships between veteran status and the potential mediators
+# Substance abuse
+model_substance <- glm(substance ~ numVet + age_num + gender + race + marry, 
+                       data = data_complete, family = binomial(link = "logit"), na.action = na.exclude)
+or_table_substance <- as.data.frame(exp(cbind(OR = coef(model_substance), confint(model_substance))))
+# or_table_substance
+
+# Anxiety/depression
+model_anx_dep <- glm(anx_dep ~ numVet + age_num + gender + race + marry, 
+                     data = data_complete, family = binomial(link = "logit"), na.action = na.exclude)
+or_table_anx_dep <- as.data.frame(exp(cbind(OR = coef(model_anx_dep), confint(model_anx_dep))))
+# or_table_anx_dep
+
+# Conduct a mediation analysis using bootstrapping 
+# Define a function to perform the mediation analysis
+mediation_analysis <- function(data, indices) {
+  # Subset the data based on the bootstrap indices
+  data_boot <- data[indices, ]
+  
+  # Fit the models using the bootstrapped data
+  model3_boot <- glm(sudden ~ numVet + age_num + gender + race + marry + substance + anx_dep,
+                     data = data_boot, family = binomial(link = "logit"))
+  
+  model_substance_boot <- glm(substance ~ numVet + age_num + gender + race + marry,
+                              data = data_boot, family = binomial(link = "logit"))
+  
+  model_anx_boot <- glm(anx_dep ~ numVet + age_num + gender + race + marry,
+                              data = data_boot, family = binomial(link = "logit"))
+  
+  # Extract the coefficients
+  a1 <- coef(model_substance_boot)["numVet"]
+  b1 <- coef(model3_boot)["substance1"]
+  
+  a2 <- coef(model_anx_boot)["numVet"]
+  b2 <- coef(model3_boot)["anx_dep1"]
+  
+  indirect_effect1 <- a1 * b1
+  indirect_effect2 <- a2 * b2
+  
+  return(c(indirect_effect1, indirect_effect2))
+}
+
+# Perform bootstrapping
+set.seed(123)
+boot_results <- boot(data_complete, mediation_analysis, R = 1000)
+
+# Calculate confidence intervals for the indirect effects
+# Substance abuse
+lower_substance <- quantile(boot_results$t[, 1], prob = 0.05/2)
+upper_substance <- quantile(boot_results$t[, 1], prob = 1 - 0.05/2)
+ci_substance <- c(lower_substance, upper_substance)
+
+# Anxiety/depression
+lower_anx_dep <- quantile(boot_results$t[, 2], prob = 0.05/2)
+upper_anx_dep <- quantile(boot_results$t[, 2], prob = 1 - 0.05/2)
+ci_anx_dep <- c(lower_anx_dep, upper_anx_dep)
+
+# Print the results
+cat("Indirect effect of substance abuse:", boot_results$t0[1], "\n")
+cat("95% CI:", ci_substance[1], ci_substance[2], "\n\n")
+
+cat("Indirect effect of anxiety/depression:", boot_results$t0[2], "\n")
+cat("95% CI:", ci_anx_dep[1], ci_anx_dep[2], "\n")
+
+```
+
+```{r or, inlcude=FALSE}
+print(exp(2.27)) # Substance OR
+print(exp(0.69)) # anx OR
+```
+### Interpretation
+Conduct a mediation analysis using bootstrapping. 
+
+- Indirect effect of substance abuse: The estimated indirect effect of veteran status on sudden death through substance abuse is 2.27[0.07, 4.18]. The confidence interval does not include zero, indicating that the indirect effect of veteran status on sudden death through substance abuse is statistically significant at the 95% confidence level. On average, being a veteran is associated with a 9.68 times higher odds of sudden death through the mediating effect of substance abuse, compared to non-veterans.
+
+- Indirect effect of anxiety/depression: The estimated indirect effect of veteran status on sudden death through anxiety/depression is 0.69 [-0.09, 1.44]. The confidence interval include zero, suggesting that the indirect effect of veteran status on sudden death through anxiety/depression is not statistically significant at the 95% confidence level. 
+We can conclude that the indirect effects for substance abuse is statistically significant. This means substance abuse partially mediate the relationship between veteran status and sudden death.
+
