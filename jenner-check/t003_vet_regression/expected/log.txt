@@ -1,0 +1,64 @@
+NOTE: Option OBS changed to 100.
+NOTE: DATA Pilot_clean2
+
+NOTE: Processing inline DATALINES (30 lines)
+
+NOTE: Read 30 rows from DATALINES.
+NOTE: Wrote Pilot_clean2 (30 rows, 9 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA Control_clean2
+
+NOTE: Processing inline DATALINES (30 lines)
+
+NOTE: Read 30 rows from DATALINES.
+NOTE: Wrote Control_clean2 (30 rows, 9 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA merge_pilot_vet
+
+
+NOTE: Read 30 rows from Pilot_clean2.
+NOTE: Read 30 rows from Control_clean2.
+NOTE: Wrote merge_pilot_vet (60 rows, 9 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA multi_pilot
+
+
+NOTE: Read 60 rows from work.merge_pilot_vet.
+NOTE: Wrote multi_pilot (60 rows, 10 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC FREQ
+NOTE: PROC FREQ statement used.
+NOTE: Option TITLE changed to Model 1, Veteran Status with Sudden Death.
+NOTE: PROC LOGISTIC data=multi_pilot
+
+NOTE: Using Python statsmodels.api.Logit version 0.14.6
+NOTE: ODS plot written: logistic_oddsratio.spec.json
+NOTE: ODS plot written: logistic_roc.spec.json
+NOTE: PROC LOGISTIC ODS Graphics generated.
+NOTE: PROC LOGISTIC completed. Results written to: ./ods_output/logistic_results.spec.json
+NOTE: Option TITLE changed to Model 2, Veteran Status with Sudden Death.
+NOTE: Option TITLE2 changed to Adjusted by age, gender, race, and marital status.
+NOTE: PROC LOGISTIC data=multi_pilot
+
+NOTE: Using Python statsmodels.api.Logit version 0.14.6
+NOTE: ODS plot written: logistic_oddsratio.spec.json
+NOTE: ODS plot written: logistic_roc.spec.json
+NOTE: PROC LOGISTIC ODS Graphics generated.
+NOTE: PROC LOGISTIC completed. Results written to: ./ods_output/logistic_results.spec.json
+NOTE: Option TITLE3 changed to Model 3, Veteran Status with Sudden Death.
+NOTE: Option TITLE4 changed to Adjusted by age, gender, race, and marital status, substance abuse and mental health.
+NOTE: PROC LOGISTIC data=multi_pilot
+
+NOTE: Using Python statsmodels.api.Logit version 0.14.6
+NOTE: ODS plot written: logistic_oddsratio.spec.json
+NOTE: ODS plot written: logistic_roc.spec.json
+NOTE: PROC LOGISTIC ODS Graphics generated.
+NOTE: PROC LOGISTIC completed. Results written to: ./ods_output/logistic_results.spec.json

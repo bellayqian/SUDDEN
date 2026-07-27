@@ -1,0 +1,7 @@
+{
+  "bundle": "t003_vet_regression",
+  "source_file": "Veteran_SuddenDeath/Code/SUDDEN_vet_regression.sas",
+  "source_blob_sha": "fa757e24f39a69c008ecb029e651223ba3dda4ba",
+  "source_commit": "1fbf871e236769223e51380bea3d5b8d41ac5a32",
+  "notes": "Veteran-status logistic regression. Keeps Bella's merge of the cleaned pilot and control tables, the numVet derivation, the PROC FREQ cross-tab, and all three PROC LOGISTIC models (unadjusted; adjusted for age/gender/race/marital status; then adding substance abuse and anxiety/depression), each with class-variable reference levels and ODS SELECT of ParameterEstimates/OddsRatios -- verbatim. The upstream Pilot_clean2/Control_clean2 tables are produced by her private-data DEMO scripts, so the autoexec stands in two 30-row synthetic tables with the exact columns the models consume. The proc printto log redirect and ODS PDF file targeting her private folder are dropped."
+}

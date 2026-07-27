@@ -1,0 +1,29 @@
+NOTE: Option OBS changed to 100.
+NOTE: Library SUDDEN uses 1 concatenated paths.
+NOTE: DATA sudden.WestAfrica
+
+NOTE: Processing inline DATALINES (10 lines)
+
+NOTE: Read 10 rows from DATALINES.
+NOTE: Wrote sudden.WestAfrica (10 rows, 16 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA work.WestAfrica_clean
+
+
+NOTE: Read 10 rows from sudden.WestAfrica.
+NOTE: Wrote work.WestAfrica_clean (10 rows, 18 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC FREQ
+NOTE: ODS plot written: freq_death_veteran_2021.spec.json
+NOTE: PROC FREQ statement used.
+NOTE: PROC FREQ
+NOTE: ODS plot written: freq_vet.spec.json
+NOTE: PROC FREQ statement used.
+NOTE: PROC FREQ
+NOTE: ODS plot written: freq_marry.spec.json
+NOTE: ODS plot written: freq_race.spec.json
+NOTE: PROC FREQ statement used.

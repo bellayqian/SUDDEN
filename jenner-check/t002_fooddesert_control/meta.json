@@ -1,0 +1,7 @@
+{
+  "bundle": "t002_fooddesert_control",
+  "source_file": "Veteran_SuddenDeath/Code/FoodDesert_CONTROL.sas",
+  "source_blob_sha": "b40d40d1894040253db72776e99ec0e2e8006e48",
+  "source_commit": "1fbf871e236769223e51380bea3d5b8d41ac5a32",
+  "notes": "Food-desert control-arm cleaning step. Keeps Bella's coded-to-readable recoding of race/sex/food_desert and the chf/dm/dyslip/htn/cad comorbidity flags, her conditional delete, and the freqTest / cleaned-data / crosstab PROC FREQ checks plus PROC CONTENTS verbatim. The proc import of the private Kothari_Control2.xlsx and the external %include Compare_baseline_669 macro / PROC REPORT RTF block are replaced by a 10-row synthetic sudden.Control_FoodDesert table in the autoexec matching the columns the cleaning step reads."
+}
