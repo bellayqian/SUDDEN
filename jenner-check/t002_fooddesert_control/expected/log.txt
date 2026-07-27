@@ -1,0 +1,52 @@
+NOTE: Option OBS changed to 100.
+NOTE: Library SUDDEN uses 1 concatenated paths.
+NOTE: DATA sudden.Control_FoodDesert
+
+NOTE: Processing inline DATALINES (10 lines)
+
+NOTE: Read 10 rows from DATALINES.
+NOTE: Wrote sudden.Control_FoodDesert (10 rows, 14 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: DATA freqTest
+
+
+NOTE: Read 10 rows from sudden.Control_FoodDesert.
+NOTE: Wrote freqTest (10 rows, 13 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC FREQ
+NOTE: PROC FREQ statement used.
+NOTE: DATA work.ctrl_FoodDesert_clean1
+
+
+NOTE: Read 10 rows from sudden.Control_FoodDesert.
+NOTE: Wrote work.ctrl_FoodDesert_clean1 (10 rows, 10 columns).
+NOTE: DATA elapsed:
+  wall  0.00 seconds
+  cpu   0.00 seconds
+NOTE: PROC FREQ
+NOTE: ODS plot written: freq_race.spec.json
+NOTE: ODS plot written: freq_gender.spec.json
+NOTE: ODS plot written: freq_desert.spec.json
+NOTE: ODS plot written: freq_chf.spec.json
+NOTE: ODS plot written: freq_dyslip.spec.json
+NOTE: ODS plot written: freq_diabetes.spec.json
+NOTE: ODS plot written: freq_htn.spec.json
+NOTE: ODS plot written: freq_status.spec.json
+NOTE: ODS plot written: freq_cad.spec.json
+NOTE: ODS plot written: freq_food_desert.spec.json
+NOTE: PROC FREQ statement used.
+NOTE: PROC FREQ
+NOTE: ODS plot written: freq_food_desert.spec.json
+NOTE: ODS plot written: freq_chf_controlsd.spec.json
+NOTE: PROC FREQ statement used.
+NOTE: PROC FREQ
+NOTE: ODS plot written: freq_desert.spec.json
+NOTE: ODS plot written: freq_chf.spec.json
+NOTE: PROC FREQ statement used.
+NOTE: PROC CONTENTS data=ctrl_FoodDesert_clean1
+
+NOTE: PROC CONTENTS completed: 10 observations, 10 variables

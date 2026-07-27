@@ -1,0 +1,7 @@
+{
+  "bundle": "t001_westafrica_demo",
+  "source_file": "Veteran_SuddenDeath/Code/SUDDEN_WestAfrica_DEMO.sas",
+  "source_blob_sha": "11416cf9d0d2387e412d2846b133a5acfe13a648",
+  "source_commit": "1fbf871e236769223e51380bea3d5b8d41ac5a32",
+  "notes": "West Africa sudden-death demographics cleaning step. Keeps Bella's substr/input age parse, scan()-based marital-status recode, race collapse and comorbidity flag recoding verbatim, plus her three PROC FREQ checks. The private SUDDENPilot-WestAfrica_Data.csv (proc import) and the external %include Compare_baseline_669 macro / PROC REPORT RTF block are replaced by a 10-row synthetic sudden.WestAfrica table in the autoexec whose columns match what the cleaning step reads."
+}

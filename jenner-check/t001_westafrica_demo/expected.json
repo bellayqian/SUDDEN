@@ -1,0 +1,14 @@
+{
+  "_captured_at": "2026-07-27T15:24:00Z",
+  "_captured_run_id": "r_36b84c16769f4b099c91aafc5b434c1c",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "NOTE: Wrote sudden.WestAfrica (10 rows, 16 columns).",
+    "NOTE: Read 10 rows from sudden.WestAfrica.",
+    "NOTE: Wrote work.WestAfrica_clean (10 rows, 18 columns).",
+    "NOTE: PROC FREQ statement used."
+  ],
+  "log_does_not_contain": ["ERROR:", "[JENNER-ERROR"],
+  "diagnostics": {"parse_warnings": [], "runtime_warnings": []}
+}

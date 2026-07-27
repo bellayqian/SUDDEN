@@ -1,0 +1,30 @@
+                                                   The FREQ Procedure
+
+                                                Cumulative    Cumulative
+death_veteran_2021    Frequency    Percent     Frequency      Percent
+---------------------------------------------------------------------------
+1                             4     40.00            4        40.00
+2                             4     40.00            8        80.00
+3                             2     20.00           10       100.00
+                                                   The FREQ Procedure
+
+                                         Cumulative    Cumulative
+vet            Frequency    Percent     Frequency      Percent
+--------------------------------------------------------------------
+Non-Veteran            6     60.00            6        60.00
+Veteran                4     40.00           10       100.00
+                                                   The FREQ Procedure
+
+                                           Cumulative    Cumulative
+marry            Frequency    Percent     Frequency      Percent
+----------------------------------------------------------------------
+                         1     10.00            1        10.00
+Married                  7     70.00            8        80.00
+Never Married            2     20.00           10       100.00
+
+                                   Cumulative    Cumulative
+race     Frequency    Percent     Frequency      Percent
+--------------------------------------------------------------
+Black            5     50.00            5        50.00
+Other            2     20.00            7        70.00
+White            3     30.00           10       100.00

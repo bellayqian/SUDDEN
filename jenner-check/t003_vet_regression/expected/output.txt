@@ -1,0 +1,71 @@
+                                       Model 1, Veteran Status with Sudden Death
+
+            Analysis of Maximum Likelihood Estimates            
+
+Parameter  Estimate  Standard Error  Wald Chi-Square  Pr > ChiSq
+---------  --------  --------------  ---------------  ----------
+Intercept   -0.1823          0.3028           0.3626      0.5470
+numVet       0.6931          0.5986           1.3408      0.2469
+
+                     Odds Ratio Estimates                     
+
+Effect    Point Estimate  95% Wald CL Lower  95% Wald CL Upper
+--------  --------------  -----------------  -----------------
+numVet             2.000              0.619              6.465
+
+                                       Model 2, Veteran Status with Sudden Death
+                                   Adjusted by age, gender, race, and marital status
+
+            Analysis of Maximum Likelihood Estimates            
+
+Parameter  Estimate  Standard Error  Wald Chi-Square  Pr > ChiSq
+---------  --------  --------------  ---------------  ----------
+Intercept   -2.1781          1.3225           2.7124      0.0996
+numVet       1.1894          0.7195           2.7326      0.0983
+age_num      0.0366          0.0199           3.3851      0.0658
+Gender      -0.0339          0.6138           0.0031      0.9559
+Race         0.1396          0.6766           0.0426      0.8365
+Race        -1.0401          0.6892           2.2774      0.1313
+marry        0.1183          0.5967           0.0393      0.8429
+
+                     Odds Ratio Estimates                     
+
+Effect    Point Estimate  95% Wald CL Lower  95% Wald CL Upper
+--------  --------------  -----------------  -----------------
+numVet             3.285              0.802             13.458
+age_num            1.037              0.998              1.079
+Gender             0.967              0.290              3.219
+Race               1.150              0.305              4.330
+Race               0.353              0.092              1.364
+marry              1.126              0.349              3.625
+
+                                       Model 3, Veteran Status with Sudden Death
+                  Adjusted by age, gender, race, and marital status, substance abuse and mental health
+
+            Analysis of Maximum Likelihood Estimates            
+
+Parameter  Estimate  Standard Error  Wald Chi-Square  Pr > ChiSq
+---------  --------  --------------  ---------------  ----------
+Intercept   -2.5338          1.3924           3.3111      0.0688
+numVet       1.1316          0.7436           2.3161      0.1280
+age_num      0.0374          0.0203           3.3991      0.0652
+Gender       0.3100          0.6586           0.2216      0.6378
+Race         0.0568          0.7021           0.0065      0.9355
+Race        -1.1999          0.7436           2.6041      0.1066
+marry        0.0658          0.6121           0.0115      0.9144
+substance   -0.2261          0.8274           0.0747      0.7846
+anx_dep      1.0185          0.6416           2.5196      0.1124
+
+                     Odds Ratio Estimates                      
+
+Effect     Point Estimate  95% Wald CL Lower  95% Wald CL Upper
+---------  --------------  -----------------  -----------------
+numVet              3.101              0.722             13.317
+age_num             1.038              0.998              1.080
+Gender              1.363              0.375              4.958
+Race                1.058              0.267              4.191
+Race                0.301              0.070              1.294
+marry               1.068              0.322              3.545
+substance           0.798              0.158              4.037
+anx_dep             2.769              0.787              9.738
+

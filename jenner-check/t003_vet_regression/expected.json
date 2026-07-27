@@ -1,0 +1,14 @@
+{
+  "_captured_at": "2026-07-27T15:27:00Z",
+  "_captured_run_id": "r_458ac3b919da4cb7909a1d8ec1835b22",
+  "status": "ok",
+  "exit_code": 0,
+  "log_contains": [
+    "NOTE: Wrote merge_pilot_vet (60 rows, 9 columns).",
+    "NOTE: Wrote multi_pilot (60 rows, 10 columns).",
+    "NOTE: PROC LOGISTIC data=multi_pilot",
+    "NOTE: PROC LOGISTIC completed. Results written to: ./ods_output/logistic_results.spec.json"
+  ],
+  "log_does_not_contain": ["ERROR:", "[JENNER-ERROR"],
+  "diagnostics": {"parse_warnings": [], "runtime_warnings": []}
+}

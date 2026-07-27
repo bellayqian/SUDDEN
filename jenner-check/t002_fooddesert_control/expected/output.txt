@@ -1,0 +1,114 @@
+                                                   The FREQ Procedure
+
+                      Cumulative
+race     Frequency    Frequency
+-----------------------------------
+Black            4            4
+Other            2            6
+White            4           10
+
+                       Cumulative
+gender    Frequency    Frequency
+------------------------------------
+Female            4            4
+Male              6           10
+
+                       Cumulative
+desert    Frequency    Frequency
+------------------------------------
+No                5            5
+Yes               5           10
+
+                    Cumulative
+CHF    Frequency    Frequency
+---------------------------------
+No             5            5
+Yes            5           10
+
+                       Cumulative
+dyslip    Frequency    Frequency
+------------------------------------
+No                6            6
+Yes               4           10
+
+                         Cumulative
+diabetes    Frequency    Frequency
+--------------------------------------
+No                  6            6
+Yes                 4           10
+
+                    Cumulative
+HTN    Frequency    Frequency
+---------------------------------
+No             4            4
+Yes            6           10
+
+                        Cumulative
+status     Frequency    Frequency
+-------------------------------------
+Control           10           10
+
+                    Cumulative
+CAD    Frequency    Frequency
+---------------------------------
+No             6            6
+Yes            4           10
+
+                            Cumulative
+food_desert    Frequency    Frequency
+-----------------------------------------
+0                      3            3
+1                      2            5
+2                      5           10
+                                                   The FREQ Procedure
+
+                            Cumulative
+food_desert    Frequency    Frequency
+-----------------------------------------
+0                      3            3
+1                      2            5
+2                      5           10
+
+                              Cumulative
+chf_controlsd    Frequency    Frequency
+-------------------------------------------
+0                        5            5
+1                        5           10
+                                                   The FREQ Procedure
+
+                       Cumulative
+desert    Frequency    Frequency
+------------------------------------
+No                5            5
+Yes               5           10
+
+                    Cumulative
+CHF    Frequency    Frequency
+---------------------------------
+No             5            5
+Yes            5           10
+
+PROC CONTENTS
+-------------------------------------------------------------------------------
+
+Data Set Name: ctrl_FoodDesert_clean1
+Observations:  10
+Variables:     10
+
+Variables (in alphabetical order):
+
+  #  Variable     Type    Len  Format  Label
+---  -----------  ----  -----  ------  -----
+  1  CAD          Char      8          
+  2  CHF          Char      8          
+  3  desert       Char      8          
+  4  diabetes     Char      8          
+  5  dyslip       Char      8          
+  6  food_desert   Num      8          
+  7  gender       Char      6          
+  8  HTN          Char      8          
+  9  race         Char     25          
+ 10  status       Char      8          
+
+-------------------------------------------------------------------------------
+
